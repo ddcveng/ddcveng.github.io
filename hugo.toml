@@ -2,12 +2,14 @@ baseURL = 'https://edo.sh/'
 languageCode = 'en-us'
 title = 'cvengo bengo'
 theme = 'terminal'
+copyright = 'Eduard Hopfer 2025'
 
 [params]
 showLanguageSelector = false
 centerTheme = true
 enableGitInfo = true
 showLastUpdated = true
+
 
 [languages]
   [languages.en]
@@ -33,11 +35,15 @@ showLastUpdated = true
         logoText = "edo.sh"
         logoHomeLink = "/"
 
-    #   [languages.en.menu]
-    #     [[languages.en.menu.main]]
-    #       identifier = "about"
-    #       name = "About"
-    #       url = "/about"
+  [languages.en.menu]
+    [[languages.en.menu.main]]
+        identifier = "portfolio"
+        name = "portfolio"
+        url = "/portfolio"
+    [[languages.en.menu.main]]
+        identifier = "posts"
+        name = "posts"
+        url = "/posts"
         # [[languages.en.menu.main]]
         #   identifier = "showcase"
         #   name = "Showcase"
