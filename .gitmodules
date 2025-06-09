@@ -1,3 +1,7 @@
 [submodule "themes/terminal"]
 	path = themes/terminal
 	url = https://github.com/panr/hugo-theme-terminal.git
+[submodule "themes/terminal-dd"]
+	path = themes/terminal-dd
+	url = https://github.com/ddcveng/hugo-theme-terminal-dd.git
+        branch = dd-custom

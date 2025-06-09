@@ -1,7 +1,7 @@
 baseURL = 'https://edo.sh/'
 languageCode = 'en-us'
 title = 'cvengo bengo'
-theme = 'terminal'
+theme = 'terminal-dd'
 copyright = 'Eduard Hopfer 2025'
 
 [params]
@@ -9,7 +9,8 @@ showLanguageSelector = false
 centerTheme = true
 enableGitInfo = true
 showLastUpdated = true
-
+enablePostContent = false # whether to show a preview of a post at all
+email = 'hopfere[at]proton[dot]me'
 
 [languages]
   [languages.en]
