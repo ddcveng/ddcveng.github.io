@@ -1,7 +1,7 @@
 baseURL = 'https://edo.sh/'
 languageCode = 'en-us'
 title = 'cvengo bengo'
-theme = 'terminal-dd'
+theme = 'terminal-dd' # terminal-local-dev
 copyright = 'Eduard Hopfer 2025'
 
 [params]
