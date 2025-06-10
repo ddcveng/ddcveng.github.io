@@ -1,0 +1,83 @@
+{{ define "main" }}
+  {{ if .Content }}
+    <div class="index-content {{ if .Params.framed -}}framed{{- end -}}">
+      {{ .Content }}
+    </div>
+  {{ end }}
+
+  <h2>Recent blog posts</h2>
+
+  <div class="posts">
+    {{ $isntDefault := not (or (eq (trim $.Site.Params.contentTypeName " ") "posts") (eq (trim $.Site.Params.contentTypeName " ") "")) }}
+    {{ $contentTypeName := cond $isntDefault (string $.Site.Params.contentTypeName) "posts" }}
+
+    {{ $PageContext := . }}
+    {{ if .IsHome }}
+      {{ $PageContext = .Site }}
+    {{ end }}
+    {{ $paginator := .Paginate (where $PageContext.RegularPages "Type" $contentTypeName) }}
+
+    {{ range $paginator.Pages }}
+      <article class="post-compact on-list">
+        <h4 class="post-title">
+          <a href="{{ .Permalink }}">{{ .Title | markdownify }}</a>
+        </h4>
+
+        <div class="">
+          {{- if .Date -}}
+            <time class="post-date">
+              {{- partial "post-date" . -}}
+            </time>
+          {{- end -}}
+
+          {{ if .Params.tags }}
+              {{ range .Params.tags }}
+              <a href="{{ (urlize (printf "tags/%s/" . )) | absLangURL }}">
+                #{{- . -}}
+              </a>&nbsp;
+              {{ end }}
+          {{ end }}
+        </div>
+
+
+        {{ partial "cover.html" . }}
+
+        {{ if $.Site.Params.enablePostContent }}
+        <div class="post-content">
+          {{ if .Params.showFullContent }}
+            {{ .Content }}
+          {{ else if .Description }}
+            <p>{{ .Description | markdownify }}</p>
+          {{ else }}
+            {{ .Summary }}
+          {{ end }}
+        </div>
+
+        {{ if not .Params.showFullContent }}
+          <div>
+            <a class="read-more button inline" href="{{ .RelPermalink }}">[{{ $.Site.Params.ReadMore }}]</a>
+          </div>
+        {{ end }}
+        {{ end }}
+      </article>
+    {{ end }}
+  </div>
+
+    {{ if len $.Site.Params.Links }}
+    <div class="links">
+      <h2>Links</h2>
+          <ul>
+            {{ range $.Site.Params.Links }}
+                {{ if .isResource }}
+                    {{ $caption := .caption }}
+                    {{ with resources.Get .target }}
+                    <li><a href="{{ .Permalink }}" target="_blank">{{ $caption }}</a></li>
+                    {{ end }}
+                {{ else }}
+                    <li><a href="{{ .target }}" target="_blank">{{ .caption }}</a></li>
+                {{ end }}
+            {{ end }}
+          </ul>
+    </div>
+    {{ end }}
+{{ end }}

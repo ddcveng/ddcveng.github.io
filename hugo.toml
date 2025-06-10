@@ -12,6 +12,19 @@ showLastUpdated = true
 enablePostContent = false # whether to show a preview of a post at all
 email = 'hopfere[at]proton[dot]me'
 
+    [[params.links]]
+    caption = "GitHub"
+    target = "https://github.com/ddcveng"
+
+    [[params.links]]
+    caption = "Itch"
+    target = "https://ddcveng.itch.io/"
+
+    [[params.links]]
+    caption = "Curriculum Vitae"
+    target = "cv.pdf"
+    isResource = true
+
 [languages]
   [languages.en]
     languageName = "English"
